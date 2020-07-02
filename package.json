@@ -1,0 +1,41 @@
+{
+  "name": "cmbsdk-cordova",
+  "version": "1.2.19",
+  "description": "CMB Scanner Cordova Plugin",
+  "cordova": {
+    "id": "cmb-sdk-cordova-plugin",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cognex-ID/cmb-cordova.git"
+  },
+  "nativescript": {
+    "platforms": {
+      "android": "1.0.0",
+      "ios": "1.0.0"
+    }
+  },
+  "keywords": [
+    "cordova",
+    "phonegap",
+    "barcode",
+    "scanner",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "author": "Cognex",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://cmbdn.cognex.com/tickets/submit_ticket"
+  },
+  "homepage": "https://cmbdn.cognex.com/knowledge/cordova-plugin-for-cmbsdk",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

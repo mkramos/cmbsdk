@@ -1,0 +1,1 @@
+You are using cmbSDK Cordova v2.3.1.1219 build

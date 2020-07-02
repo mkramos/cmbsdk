@@ -1,0 +1,308 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color:#000;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:16px;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    width:100%;
+}
+
+/* Portrait layout (default) */
+.app {
+    margin: 0 auto;
+}
+
+#title-bar{
+    height: 60px;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    background: #000
+}
+
+h1#title {text-align: center;color: #fff200;font-size: 1.313em;padding: 17px 10px;margin: 0;font-weight: normal;}
+
+#logo{
+    background-color: #fff200;
+    height: 225px;
+    margin: 0 auto;
+    width: 100;
+}
+#logo-img{
+    width: 60px;
+    float: left;
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:0px;  
+        margin:0px;  
+    }
+}
+
+#content{
+    position: relative;
+    margin-bottom: 120px;
+    top: 60px;
+    z-index: 100;
+}
+
+#footer{
+    position: fixed;
+    bottom: 0px;
+    padding: 0px;
+    width: 100%;
+    z-index: 1000;
+    background: #000;
+    height: 60px;
+}
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+  width:100%;
+  left:0;
+  text-align:center;
+   padding: 3px 0;
+   background-color: rgba(0,0,0,0.5);
+}
+
+#sdk-version {
+    position: absolute;
+    right: auto;
+    left: 10px;
+    bottom: 50px;
+    width: 80px;
+    height: 20px;
+    border-radius: 10px;
+    background: #8e8e8e8e;
+
+    border: 2px solid #ffff;
+    padding: 20px 0 0 0;
+    text-align: center;
+}
+
+#scanner-btn {
+    position: absolute;
+    right: 10px;
+    bottom: 100px;
+    width: 70px;
+    height: 70px;
+    border-radius: 70px;
+    background: #8e8e8e;
+    
+    border:2px solid #fff;
+    padding: 20px 0 0 0;
+    text-align: center;
+}
+#scanner-btn:before{
+    content: "\0000a0";
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    line-height: 24px;
+    position: relative;
+    top: -4px;
+    left: 3px;
+    background-size: 100% 100%;
+    background: url("data:image/svg+xml;utf8,<?xml version='1.0' encoding='utf-8'?> <svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='27.6px' height='23px' viewBox='0 0 27.6 23' enable-background='new 0 0 27.6 23' xml:space='preserve'> <path class='barcode-path' id='barcode' fill='%23FFFFFF' d='M4.6,18.4h2.3V4.6H4.6V18.4z M8,18.4h1.2V4.6H8V18.4z M10.3,18.4h3.4V4.6h-3.4V18.4z M14.9,18.4h1.2V4.6h-1.2V18.4z M18.4,18.4h2.3V4.6h-2.3V18.4z M21.8,18.4H23V4.6h-1.2V18.4z M6.9,2.3V0H2.3C1.7,0,1.1,0.2,0.7,0.6C0.2,1.1,0,1.6,0,2.3v4.6h2.3V2.3H6.9z M20.7,0v2.3h4.6v4.6h2.3V2.3c0-0.6-0.2-1.2-0.7-1.6c-0.4-0.4-1-0.6-1.6-0.6H20.7z M0,16.1v4.6c0,0.6,0.2,1.2,0.7,1.6c0.4,0.4,1,0.6,1.6,0.6h4.6v-2.3H2.3v-4.6H0z M20.7,20.7V23h4.6c0.6,0,1.2-0.2,1.6-0.6c0.4-0.4,0.7-1,0.7-1.6v-4.6h-2.3v4.6H20.7z' /> </svg>") no-repeat left center transparent;        
+
+}
+
+#scanner-btn.stop{
+    /*background: #ff0033;*/
+    background: #4dbd74;
+}
+
+#pick-device {
+    position: absolute;
+    left: 117px;
+    top: 13px;
+    width: 201px;
+    border-radius: 5px;
+    background: #0f0f08;
+    padding: 10px 10px 0;
+    color: #fff200;
+    min-height: 34px;
+    font-size: 0.688em;
+    text-decoration: none;
+}
+
+#pick-device:before{
+    content: "\0000a0";
+    display: inline-block;
+    height: 24px;
+    width: 28px;
+    line-height: 24px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    background-size: 100% 100%;
+   background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' width='24' height='24' viewBox='0 0 24 24'><path style='fill:%23fff200' d='M22,17H18V10H22M23,8H17A1,1 0 0,0 16,9V19A1,1 0 0,0 17,20H23A1,1 0 0,0 24,19V9A1,1 0 0,0 23,8M4,6H22V4H4A2,2 0 0,0 2,6V17H0V20H14V17H4V6Z' /></svg>") no-repeat left center transparent;  
+}
+
+#connect-btn {
+    position: absolute;
+    right: 15px;
+    top: 13px;
+    width: 34px;
+    border-radius: 5px;
+    background: #0f0f08;
+    padding: 9px 10px 0;
+    color: #fff200;
+    height: 34px;
+    font-size: 0.688em;
+    text-decoration: none;
+}
+
+#connect-btn:before{
+    content: "\0000a0";
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    line-height: 24px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    background-size: 100% 100%;
+
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 40'><title>ico-connection</title><g id='Layer_2' data-name='Layer 2'><g id='Layer_1-2' data-name='Layer 1'><path style='fill:%23ffffff' d='M18,33.938q-7.687-.092-12.75-3.469T0,21.938A8.432,8.432,0,0,1,1.453,17.2a12.939,12.939,0,0,1,3.984-3.8,8.04,8.04,0,0,0-3.469,6.281q.188,4.408,4.688,7.266A21.931,21.931,0,0,0,18,30V24l7.969,7.969L18,39.938ZM18,6q7.686.094,12.75,3.469T36,18a8.438,8.438,0,0,1-1.453,4.734,12.928,12.928,0,0,1-3.984,3.8,8.041,8.041,0,0,0,3.469-6.281q-.189-4.406-4.687-7.312A21.089,21.089,0,0,0,18,9.938v6L10.031,7.969,18,0Z'/></g></g></svg>") no-repeat left center transparent; 
+
+
+}
+
+#connect-btn.disconnect{
+        background: #ff0033;
+
+}
+#connect-btn.disconnect:before{
+            background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 40'><title>ico-connected</title><g id='Layer_2' data-name='Layer 2'><g id='Layer_1-2' data-name='Layer 1'><path style='fill:%234dbd74' d='M18,33.938q-7.687-.092-12.75-3.469T0,21.938A8.432,8.432,0,0,1,1.453,17.2a12.939,12.939,0,0,1,3.984-3.8,8.04,8.04,0,0,0-3.469,6.281q.188,4.408,4.688,7.266A21.931,21.931,0,0,0,18,30V24l7.969,7.969L18,39.938ZM18,6q7.686.094,12.75,3.469T36,18a8.438,8.438,0,0,1-1.453,4.734,12.928,12.928,0,0,1-3.984,3.8,8.041,8.041,0,0,0,3.469-6.281q-.189-4.406-4.687-7.312A21.089,21.089,0,0,0,18,9.938v6L10.031,7.969,18,0Z'/></g></g></svg>") no-repeat left center transparent; 
+}
+
+#show-result{
+    width: 90%;
+    height: 150px;
+    margin : 0 auto;
+}
+
+#device-connection{
+    margin : 0px;
+    padding : 5px 0px 0px 0px;
+}
+
+.event {
+    color: #FFFFFF;
+    font-size: 0.688em;
+    height: 20px;
+    float: left;
+    margin: 0;
+    position: absolute;
+    left: 20px;
+    top: 23px;
+    display: block;
+    font-weight: bold;
+}
+
+.event.listening {
+    /*background-color:#333333;*/
+    display:block;
+}
+
+.event.received {
+    /*background-color:#4B946A;*/
+    display:none;
+}
+
+.event.disconnected{
+    background-color:#dc0202;
+}
+.event.connected{
+    background-color:#4B946A;
+}
+.event.connecting{
+    /*background-color: #e4da5b;*/
+}
+.event.disconnecting{
+    /*background-color: #e4da5b;*/
+}
+
+.results-header{
+    font-size: 1.10em;
+    color: #fff;
+    padding: 17px 20px;
+    font-weight: normal;
+    text-align: center;
+    text-transform: UPPERCASE;
+}
+
+.result{
+    text-align: left;
+    padding: 8px 2px;
+    font-size: 0.875em;
+    color: #ffffff;
+    min-height: 60px;
+    padding: 21px 20px;
+    background: #0a0a06;
+}
+.result span.symbol {color: #fff200;}
+
+#content div.result:nth-child(2n+1){
+    background: #000;
+}
+
+
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}

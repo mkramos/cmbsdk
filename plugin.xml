@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cmb-sdk-cordova-plugin" version="1.2.19">
+    <name>CMBScanner</name>
+    <description>CMB Scanner Cordova Plugin</description>
+	<author>DG</author>
+    <license>Cognex/ManateeWorks License</license>
+    <keywords>cordova,phonegap,barcode,scanner</keywords>
+	
+    <js-module src="www/CMBScanner.js" name="Scanner">
+        <clobbers target="cmbScanner" />
+    </js-module>
+    <asset src="js/cmbconfig.js" target="js/cmbconfig.js" />
+	<dependency id="cordova-plugin-device" />
+	<dependency id="cordova-plugin-dialogs" />
+	<dependency id="es6-promise-plugin" />
+	
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="CMBScanner">
+                <param name="android-package" value="com.cognex.cmb.ScannerBridge" />
+            </feature>
+        </config-file>
+		<config-file target="AndroidManifest.xml" parent="/manifest">
+			<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+			<uses-permission android:name="android.permission.CAMERA" />
+			<uses-permission android:name="android.permission.INTERNET" />
+			
+			<uses-feature android:name="android.hardware.camera" android:required="true" />
+			<uses-feature android:name="android.hardware.usb.host" />
+		</config-file>
+		
+		<!-- sdk source -->
+        <framework src="src/android/cmbsdklib.gradle" custom="true" type="gradleReference"/>
+    	<lib-file src="src/android/cmbsdk-android-binary/cmbsdklib-release.aar"/>
+		
+		<resource-file src="src/android/cmbsdk-android-binary/Resources/layout/cmb_scanner_partial_view.xml" target="res/layout/cmb_scanner_partial_view.xml" />
+		<resource-file src="src/android/cmbsdk-android-binary/Resources/layout/cmb_scanner_view.xml" target="res/layout/cmb_scanner_view.xml" />
+		
+		<resource-file src="src/android/res/values/colors.xml" target="res/values/colors.xml" />
+		<resource-file src="src/android/res/values/dimens.xml" target="res/values/dimens.xml" />
+		
+		<resource-file src="src/android/res/values-v11/styles.xml" target="res/values-v11/styles.xml" />
+		<resource-file src="src/android/res/values-v14/styles.xml" target="res/values-v14/styles.xml" />
+
+		<!-- BRIDGE -->
+		<!-- For cordova-android 7.x -->
+		<resource-file src="src/android/src/com/cognex/cmb/ScannerBridge.java" target="java/com/cognex/cmb/ScannerBridge.java" />
+		<!-- For cordova-android 6.x -->
+		<resource-file src="src/android/src/com/cognex/cmb/ScannerBridge.java" target="src/com/cognex/cmb/ScannerBridge.java" />
+		
+		<info>When using the CAMERA connector you need to obtain a license from https://cmbdn.cognex.com and follow the steps there... </info>
+		
+    </platform>
+
+    <!--    IOS-->
+    <platform name="ios">
+        Supported external accessory protocols
+		<!--        PERMISSIONS-->
+        <config-file parent="UISupportedExternalAccessoryProtocols" target="*-Info.plist">
+            <array><string>com.cognex.dmcc</string></array>
+        </config-file>
+        <!-- Camera Usage Description for iOS 10+ -->
+    	<config-file target="*-Info.plist" parent="NSCameraUsageDescription">
+        	<string>Required for Scanning</string>
+    	</config-file>
+
+    	<config-file parent="/*" target="config.xml">
+        
+        <!-- BRIDGE -->
+        <feature name="CMBScanner"><param name="ios-package" value="CMBScanner" />
+        </feature></config-file><source-file src="src/ios/CMBScanner.m" />
+
+ 		<!-- ICONS -->
+ 		<source-file src="src/ios/CMBScanner/SDK/cmbsdk-ios-binary/Resources/MWBScannerImages.xcassets/ic_blank.imageset" target-dir="../../Images.xcassets" />
+		<source-file src="src/ios/CMBScanner/SDK/cmbsdk-ios-binary/Resources/MWBScannerImages.xcassets/ic_close.imageset" target-dir="../../Images.xcassets" />
+ 		<source-file src="src/ios/CMBScanner/SDK/cmbsdk-ios-binary/Resources/MWBScannerImages.xcassets/ic_flash.imageset" target-dir="../../Images.xcassets" />
+		<source-file src="src/ios/CMBScanner/SDK/cmbsdk-ios-binary/Resources/MWBScannerImages.xcassets/ic_flash_outline.imageset" target-dir="../../Images.xcassets" />
+ 		<source-file src="src/ios/CMBScanner/SDK/cmbsdk-ios-binary/Resources/MWBScannerImages.xcassets/ic_zoom.imageset" target-dir="../../Images.xcassets" />
+ 		<source-file src="src/ios/CMBScanner/SDK/cmbsdk-ios-binary/Resources/MWBScannerImages.xcassets/ic_zoom_x1.imageset" target-dir="../../Images.xcassets" />
+		<source-file src="src/ios/CMBScanner/SDK/cmbsdk-ios-binary/Resources/MWBScannerImages.xcassets/ic_zoom_x2.imageset" target-dir="../../Images.xcassets" />
+
+		<!-- SDK -->
+        <!-- lib -->
+        <framework src="src/ios/CMBScanner/SDK/cmbsdk-ios-binary/framework/cmbSDK/device_only/cmbSDK.framework" embed="true" custom="true" />
+
+        <!-- Camera Overlay -->
+        <resource-file src="src/ios/CMBScanner/SDK/cmbsdk-ios-binary/Resources/CMBScannerPartialView.xib" target-dir="CMBScanner/SDK" />
+        <resource-file src="src/ios/CMBScanner/SDK/cmbsdk-ios-binary/Resources/CMBScannerView.xib" target-dir="CMBScanner/SDK" />
+
+        <!-- iOS Frameworks -->
+        <framework src="MediaPlayer.framework" />
+        <framework src="CoreLocation.framework" />
+        <framework src="SystemConfiguration.framework" />
+        <framework src="Security.framework" />
+
+      	<info>When using the CAMERA connector you need to obtain a license from https://cmbdn.cognex.com and follow the steps there...</info>
+
+    </platform>
+</plugin>

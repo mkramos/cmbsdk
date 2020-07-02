@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+ Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="initial-scale=1, width=device-width, height=device-height, viewport-fit=cover">      
+
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src ‘self’ gap://ready file://* *; style-src ‘self’ ‘unsafe-inline’; script-src ‘self’ ‘unsafe-inline’ ‘unsafe-eval’">
+    <!-- Good default declaration:
+     * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+     * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+     * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+     * Enable inline JS: add 'unsafe-inline' to default-src
+     * Enable eval(): add 'unsafe-eval' to default-src
+     * Create your own at http://cspisawesome.com
+     -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <title>Cognex Demo Grounds</title>
+</head>
+
+<body>
+<div class="app">
+    <div id="title-bar">
+        <img id="logo-img" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='192' height='192' viewBox='0 0 192 192'><defs><style>.cls-1{fill:%23fff200;}.cls-2{clip-path:url(%23clip-path);}.cls-3{fill:%23231f20;}</style><clipPath id='clip-path' transform='translate(0 0)'><rect class='cls-1' width='192' height='192' rx='10' ry='10'/></clipPath></defs><title>lazy-cognexflat</title><g id='Layer_2' data-name='Layer 2'><g id='Layer_1-2' data-name='Layer 1'><rect class='cls-1' width='192' height='192' rx='10' ry='10'/><g class='cls-2'><image width='192' height='192' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAAsSAAALEgHS3X78AAACFklEQVR4Xu3ToQEAIAzAsP1/Lg+ME/A0Iq62s2cWquYVwM8MQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYC0C2MdGMpeSjFDAAAAAElFTkSuQmCC'/></g><path class='cls-3' d='M32.216,110.594C32.216,139.243,48.3,146,75.324,146H123.7c30.134,0,36.081-12.973,36.081-29.461V107.35h-30c0,12.162-4.054,13.514-17.567,13.514H80.19c-14.19,0-17.162-5.407-17.162-19.595V90.73c0-12.162,2.973-19.595,18.783-19.595h32.7c8.918,0,14.054,2.027,14.054,9.054v2.7h30C158.838,55.189,153.3,46,110.595,46H75.324C48.3,46,32.216,52.756,32.216,81.4v29.189Z' transform='translate(0 0)'/></g></g></svg>" />
+        <h1 id="title">cmbSDK Cordova Demo</h1>
+    </div>
+ 
+    <div id="content">
+        <div class="results-header">Results</div>
+        <!--  Results will show up here              -->
+    </div>
+    <div id="footer">
+        <div id="sdk-version">
+            <div id="sdk-version-value" class="numbertext" style="height: 100%; padding: 3px 0;"></div>
+        </div>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Booting Cordova</p>
+            <p id="device-connection" class="event received">Ready for Connections</p>
+        </div>
+        <a id="connect-btn" class="btn connect" href="javascript:;"></a>
+        <a id="pick-device" class="btn device" href="javascript:;">Pick Device [Camera]</a>
+        <a id="scanner-btn" class="btn start" href="javascript:;"></a>
+
+    </div>
+
+</div>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/cmbconfig.js"></script>
+<script type="text/javascript">
+    app.initialize();
+</script>
+</body>
+
+</html>
